@@ -6,7 +6,7 @@
  */
 import { Controller, Saber, Post, Get, Factory } from '..'
 
-@Controller('/api')
+@Controller('/user')
 class UserController extends Saber.Controller {
   @Post('/register')
   public register() {

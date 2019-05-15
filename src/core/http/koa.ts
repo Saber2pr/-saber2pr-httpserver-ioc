@@ -8,7 +8,7 @@ import { Job, Context } from '@saber2pr/koa'
 
 export interface Unit {
   url: string
-  callback: (ctx: Context) => any
+  callback: Function
   method: string
 }
 
