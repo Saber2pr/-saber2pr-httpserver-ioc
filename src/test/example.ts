@@ -2,31 +2,42 @@
  * @Author: saber2pr
  * @Date: 2019-05-14 21:30:45
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-05-14 22:52:40
+ * @Last Modified time: 2019-05-15 22:26:00
  */
-import { Controller, Saber, Post, Get, Factory } from '..'
+import { Controller, Get, Injectable, Inject, ContextService } from '..'
+import { Factory } from '../core'
+
+@Injectable()
+class UserService {
+  public getUserName() {
+    return 'saber2pr!'
+  }
+
+  public getHello() {
+    return 'Hello!'
+  }
+}
 
 @Controller('/user')
-class UserController extends Saber.Controller {
-  @Post('/register')
-  public register() {
-    this.response.end('register')
-  }
+class UserController {
+  constructor(
+    private ContextService: ContextService,
+    @Inject('UserService') private UserService: UserService
+  ) {}
 
   @Get('/login')
   public login() {
-    this.response.end('login')
+    this.ContextService.response.end(this.UserService.getUserName())
   }
-}
 
-@Controller()
-class Hello extends Saber.Controller {
   @Get('/hello')
-  hello() {
-    this.response.end('hello')
+  public hello() {
+    this.ContextService.response.end(this.UserService.getHello())
   }
 }
 
-new Factory([UserController, Hello])
+new Factory([UserController])
   .create()
   .listen(3001, () => console.log('http://localhost:3001'))
+// http://localhost:3001/user/login
+// http://localhost:3001/user/hello

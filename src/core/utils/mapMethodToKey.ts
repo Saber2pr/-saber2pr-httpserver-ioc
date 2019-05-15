@@ -13,6 +13,10 @@ export function mapMethodToKey(method: Method): KEY.Controller {
       return KEY.Controller.GET
     case 'POST':
       return KEY.Controller.POST
+    case 'DELETE':
+      return KEY.Controller.POST
+    case 'PUT':
+      return KEY.Controller.POST
     default:
       throw new TypeError()
   }

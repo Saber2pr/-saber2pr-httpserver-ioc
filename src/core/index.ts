@@ -1,2 +1,2 @@
-export * from './base/saber'
-export * from './factory'
+export * from './Factory'
+export * from './injectables/index'

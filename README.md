@@ -17,30 +17,40 @@ git clone https://github.com/Saber2pr/-saber2pr-httpserver-ioc.git
 > classMeta -(parse)-> astNode -(transform)-> unitListener
 
 ```ts
-@Controller('/api')
-class UserController extends Saber.Controller {
-  @Post('/register')
-  public register() {
-    this.response.end('register')
+@Injectable()
+class UserService {
+  public getUserName() {
+    return 'saber2pr!'
   }
+
+  public getHello() {
+    return 'Hello!'
+  }
+}
+
+@Controller('/user')
+class UserController {
+  constructor(
+    private ContextService: ContextService,
+    @Inject('UserService') private UserService: UserService
+  ) {}
 
   @Get('/login')
   public login() {
-    this.response.end('login')
+    this.ContextService.response.end(this.UserService.getUserName())
   }
-}
 
-@Controller()
-class Hello extends Saber.Controller {
   @Get('/hello')
-  hello() {
-    this.response.end('hello')
+  public hello() {
+    this.ContextService.response.end(this.UserService.getHello())
   }
 }
 
-new Factory([UserController, Hello])
+new Factory([UserController])
   .create()
   .listen(3001, () => console.log('http://localhost:3001'))
+// http://localhost:3001/user/login
+// http://localhost:3001/user/hello
 ```
 
 ---
