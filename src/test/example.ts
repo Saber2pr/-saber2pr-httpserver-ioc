@@ -4,8 +4,9 @@
  * @Last Modified by: saber2pr
  * @Last Modified time: 2019-05-15 22:26:00
  */
-import { Controller, Get, Injectable, Inject, ContextService } from '..'
+import { Controller, Get,  ContextService } from '..'
 import { Factory } from '../core'
+import { Injectable, Inject } from '@saber2pr/ioc';
 
 @Injectable()
 class UserService {

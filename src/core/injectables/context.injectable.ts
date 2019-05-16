@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-05-15 21:24:15
  */
 import { Context } from '@saber2pr/koa'
-import { Injectable } from '../../common/decorators'
+import { Injectable } from '@saber2pr/ioc';
 
 @Injectable()
 export class ContextService {

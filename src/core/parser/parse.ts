@@ -8,7 +8,7 @@ import { Reflector } from '@saber2pr/reflect'
 import { KEY } from '../../common/constants/metakeys'
 import { Controller } from '../../interface/controller'
 import { resolve } from './resolve'
-import { Injector } from '../injector/injector'
+import { Injector } from '@saber2pr/ioc'
 
 export function parse(Controller: { new (): any }): Controller {
   const baseUrl = Reflector.getMetadata<string>(

@@ -12,10 +12,4 @@ export namespace KEY {
     PUT = 'method:put',
     DELETE = 'method:delete'
   }
-  export const enum Injectable {
-    META = 'injectable:meta'
-  }
-  export const enum DESIGN {
-    PARAMTYPES = 'design:paramtypes'
-  }
 }

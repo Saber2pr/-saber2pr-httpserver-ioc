@@ -1,5 +1,3 @@
 export * from './controller'
 export * from './decorator.factory'
-export * from './inject'
-export * from './injectable'
 export * from './methods'
